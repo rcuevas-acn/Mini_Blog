@@ -15,6 +15,3 @@ On command line, execute:
 ```buildoutcfg
   npm run start
 ```
-
-### Reference Link
-https://styleguide.github.com/primer/components/box/#box \
