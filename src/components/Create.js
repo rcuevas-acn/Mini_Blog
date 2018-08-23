@@ -42,7 +42,10 @@ class Create extends Component{
         }
       })
       .then(response => response.json())
-      .then(json => console.log(json))
+      .then(json => {
+        console.log(json);
+        alert("Title: "+json.title+"\nhas successfully created");
+      })
     }
 
     onList(){
@@ -51,26 +54,34 @@ class Create extends Component{
 
     render() {
         return(
-            <div>
-              <button onClick={this.onList}>Back</button>
-              <button onClick={this.onCreate}>Create</button>
-              <div>
-                <label>
-                  Title:
-                </label>
-                <input type="text" onChange={this.onChange} ref={inputTitle => this.inputTitle = inputTitle}/>
+            <div className={"Box-body"}>
+              <div className={"Box-row"}>
+                <div style={{width: "50%", display: "inline-block"}} align="left">
+                  <button className={"btn btn-large"} onClick={this.onList}>Back</button>
+                </div>
+                <div style={{width: "50%", display: "inline-block"}} align="right">
+                  <button className={"btn btn-large"} onClick={this.onCreate}>Save</button>
+                </div>
               </div>
               <div>
-                <label>
-                  Body:
-                </label>
-                <input type="text" onChange={this.onChange} ref={inputBody => this.inputBody = inputBody}/>
-              </div>
-              <div>
-                <label>
-                  User ID:
-                </label>
-                <input type="text" onChange={this.onChange} ref={inputUserId => this.inputUserId = inputUserId}/>
+                <div className={"Box-row"}>
+                  <label>
+                    Title:&nbsp;
+                    <input className={"form-control input-block"} type="text" onChange={this.onChange} ref={inputTitle => this.inputTitle = inputTitle}/>
+                  </label>
+                </div>
+                <div className={"Box-row"}>
+                  <label>
+                    Body:&nbsp;
+                    <textarea className={"form-control input-block"} onChange={this.onChange} ref={inputBody => this.inputBody = inputBody}/>
+                  </label>
+                </div>
+                <div className={"Box-row"}>
+                  <label>
+                    User ID:&nbsp;
+                    <input className={"form-control"} type="text" onChange={this.onChange} ref={inputUserId => this.inputUserId = inputUserId}/>
+                  </label>
+                </div>
               </div>
             </div>
         )

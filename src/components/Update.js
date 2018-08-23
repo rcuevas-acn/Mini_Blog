@@ -47,12 +47,17 @@ class Update extends Component{
           }
         })
       .then(response => response.json())
-      .then(json => console.log('Update: ',json))
+      .then(json => {
+        console.log('Update: ',json);
+        alert("Title: "+json.title+"\nhas successfully updated");
+      })
     }
 
     onDelete() {
       fetch('https://jsonplaceholder.typicode.com/posts/'+this.state.data.id, {
         method: 'DELETE'
+      }).then(response => {
+        alert("Title: "+this.state.data.title+"\nhas successfully deleted");
       })
     }
 
@@ -62,23 +67,37 @@ class Update extends Component{
 
     render() {
         return(
-            <div>
-              <button onClick={this.onList}>Back</button>
-              <button onClick={this.onUpdate}>Update</button>
-              <div>
-                <label>
-                  Title:
-                </label>
-                <input type="text" onChange={this.onChange} value={this.state.data.title} ref={inputTitle => this.inputTitle = inputTitle}/>
+          <div className={"Box-body"}>
+            <div className={"Box-row"}>
+              <div style={{width: "50%", display: "inline-block"}} align="left">
+                <button className={"btn btn-large"} onClick={this.onList}>Back</button>
               </div>
-              <div>
-                <label>
-                  Body:
-                </label>
-                <input type="text" onChange={this.onChange} value={this.state.data.body} ref={inputBody => this.inputBody = inputBody}/>
+              <div style={{width: "50%", display: "inline-block"}} align="right">
+                <button className={"btn btn-large"} onClick={this.onUpdate}>Update</button>
               </div>
-              <button onClick={this.onDelete}>Delete</button>
             </div>
+            <div>
+              <div className={"Box-row"}>
+                <label>
+                  Title:&nbsp;
+                  <input className={"form-control input-block"} value={this.state.data.title} type="text" onChange={this.onChange} ref={inputTitle => this.inputTitle = inputTitle}/>
+                </label>
+              </div>
+              <div className={"Box-row"}>
+                <label>
+                  Body:&nbsp;
+                  <textarea className={"form-control input-block"} value={this.state.data.body}  onChange={this.onChange} ref={inputBody => this.inputBody = inputBody}/>
+                </label>
+              </div>
+            </div>
+            <div className={"Box-row"}>
+              <div style={{display: "inline-block"}}>
+                <center>
+                  <button className={"btn btn-large"} onClick={this.onDelete}>Delete</button>
+                </center>
+              </div>
+            </div>
+          </div>
         )
     }
 };

@@ -5,17 +5,21 @@ import {
   NavLink,
   HashRouter
 } from "react-router-dom";
+import "primer/index.scss";
 
 import List from './components/List';
 import Create from './components/Create';
 import Update from './components/Update';
 
+
 const Index = () => {
     return (
         <HashRouter>
-            <div>
-                <h1>Mini-blog</h1>
-                <div className="content">
+            <div className={"Box"}>
+              <div className={"Box-header"}>
+                <center><h1>Mini-blog</h1></center>
+              </div>
+                <div className={"Box-body content"}>
                     <Route exact path="/" component={List}/>
                     <Route path="/create" component={Create}/>
                     <Route path="/update" component={Update}/>

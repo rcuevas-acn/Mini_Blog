@@ -35,14 +35,16 @@ class List extends Component{
         const nextPath = this.nextPath;
         const styleCursor = "cursor: pointer"
         return(
-            <div>
-              <button onClick={() => this.nextPath('/create','') }>
-                  Create
-              </button>
+            <div className={"Box-body"}>
+              <div className={"Box-row"} align="right">
+                <button className={"btn btn-large"} onClick={() => this.nextPath('/create','') }>
+                    Create
+                </button>
+              </div>
                 {
                     list.map(function(d, idx){
                         return(
-                            <div style={{cursor:'pointer'}} key={idx} onClick={() => nextPath('/update',d)}>{d.title}</div>
+                            <div className={"Box-row"} style={{cursor:'pointer'}} key={idx} onClick={() => nextPath('/update',d)}>{d.title}</div>
                         )
                     })
                 }
