@@ -8,7 +8,6 @@ class List extends Component{
             data: ''
         };
 
-        this.onClick = this.onClick.bind(this);
         this.nextPath = this.nextPath.bind(this);
     }
 
@@ -16,36 +15,34 @@ class List extends Component{
         fetch('https://jsonplaceholder.typicode.com/posts')
         .then(response => response.json())
         .then(json => this.setState({
-            data: json
+            data: json,
+            selectedData: ''
         }))
     }
 
-    onClick() {
-        console.log(this.state.data);
-        console.log(this.state.data[0]['title']);
-    }
-
-    nextPath(path){
-      this.props.history.push(path);
+    nextPath(path, data){
+      this.props.history.push({
+        pathname: path,
+        state: { detail: data }
+      });
     }
 
     render() {
         const list = [];
         for(var i = 0; i < this.state.data.length; i++){
-          console.log(this.state.data[i]);
           list.push(this.state.data[i])
         }
-        const onClickRender = this.onClick
+        const nextPath = this.nextPath;
         return(
             <div>
                 {
                     list.map(function(d, idx){
                         return(
-                            <div key={idx} onClick={onClickRender}>{d.title}</div>
+                            <div key={idx} onClick={() => nextPath('/update',d)}>{d.title}</div>
                         )
                     })
                 }
-                <button onClick={() => this.nextPath('/create') }>
+                <button onClick={() => this.nextPath('/create','') }>
                     change path
                 </button>
             </div>

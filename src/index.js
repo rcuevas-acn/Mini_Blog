@@ -8,6 +8,7 @@ import {
 
 import List from './components/List';
 import Create from './components/Create';
+import Update from './components/Update';
 
 
 const Index = () => {
@@ -18,6 +19,7 @@ const Index = () => {
                 <div className="content">
                     <Route exact path="/" component={List}/>
                     <Route path="/create" component={Create}/>
+                    <Route path="/update" component={Update}/>
                 </div>
             </div>
         </HashRouter>
