@@ -10,7 +10,6 @@ import List from './components/List';
 import Create from './components/Create';
 import Update from './components/Update';
 
-
 const Index = () => {
     return (
         <HashRouter>

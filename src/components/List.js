@@ -33,18 +33,19 @@ class List extends Component{
           list.push(this.state.data[i])
         }
         const nextPath = this.nextPath;
+        const styleCursor = "cursor: pointer"
         return(
             <div>
+              <button onClick={() => this.nextPath('/create','') }>
+                  Create
+              </button>
                 {
                     list.map(function(d, idx){
                         return(
-                            <div key={idx} onClick={() => nextPath('/update',d)}>{d.title}</div>
+                            <div style={{cursor:'pointer'}} key={idx} onClick={() => nextPath('/update',d)}>{d.title}</div>
                         )
                     })
                 }
-                <button onClick={() => this.nextPath('/create','') }>
-                    change path
-                </button>
             </div>
         )
     }
